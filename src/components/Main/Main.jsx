@@ -14,11 +14,18 @@ const Main = () => {
     input,
   } = useContext(Context);
 
+  // Handler for Enter key press
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onSent(); // Call onSent function to submit the query
+    }
+  };
+
   return (
     <div className="main">
       <div className="nav">
         <p>Gemini</p>
-        <img src={assets.user_icon} />
+        <img src={assets.user_icon} alt="User icon" />
       </div>
 
       <div className="main-container">
@@ -34,33 +41,33 @@ const Main = () => {
             <div className="cards">
               <div className="card">
                 <p>Suggest beautiful places to see on an upcoming road trip</p>
-                <img src={assets.compass_icon} alt="" />
+                <img src={assets.compass_icon} alt="Compass icon" />
               </div>
 
               <div className="card">
                 <p>Briefly summarize this concepts: urban planning</p>
-                <img src={assets.bulb_icon} alt="" />
+                <img src={assets.bulb_icon} alt="Bulb icon" />
               </div>
 
               <div className="card">
-                <p>Brainstrom team bonding activities for our work retreat</p>
-                <img src={assets.message_icon} alt="" />
+                <p>Brainstorm team bonding activities for our work retreat</p>
+                <img src={assets.message_icon} alt="Message icon" />
               </div>
 
               <div className="card">
                 <p>Improve the readability of the following code</p>
-                <img src={assets.code_icon} alt="" />
+                <img src={assets.code_icon} alt="Code icon" />
               </div>
             </div>
           </>
         ) : (
           <div className="result">
             <div className="result-title">
-              <img src={assets.user_icon} alt="" />
+              <img src={assets.user_icon} alt="User icon" />
               <p>{recentPrompt}</p>
             </div>
             <div className="result-data">
-              <img src={assets.gemini_icon} alt="" />
+              <img src={assets.gemini_icon} alt="Gemini icon" />
               {loading ? (
                 <div className="loader">
                   <hr />
@@ -78,15 +85,20 @@ const Main = () => {
           <div className="search-box">
             <input
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown} // Handle Enter key press
               value={input}
               type="text"
               placeholder="Enter a prompt here"
             />
             <div>
-              <img src={assets.gallery_icon} alt="" />
-              <img src={assets.mic_icon} alt="" />
+              <img src={assets.gallery_icon} alt="Gallery icon" />
+              <img src={assets.mic_icon} alt="Mic icon" />
               {input ? (
-                <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+                <img
+                  onClick={() => onSent()}
+                  src={assets.send_icon}
+                  alt="Send icon"
+                />
               ) : null}
             </div>
           </div>
