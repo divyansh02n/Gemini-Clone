@@ -85,7 +85,7 @@ const Main = () => {
           <div className="search-box">
             <input
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown} // Handle Enter key press
+              onKeyDown={handleKeyDown}
               value={input}
               type="text"
               placeholder="Enter a prompt here"
